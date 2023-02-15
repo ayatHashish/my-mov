@@ -1,0 +1,80 @@
+<app-homenav></app-homenav>
+<div class="container">
+  <!--movie -->
+  <div class="row py-5">
+    <div class="col-xl-3 col-sm-12">
+      <div class="title-wrapper">
+        <h2>Trending Movies</h2>
+        <p>most watched movies by day</p>
+      </div>
+    </div>
+    <div *ngFor="let movie of trendMovies" class="col-xl-3  col-sm-12">
+      <div class="wow movie-card ">
+        <a [routerLink]='["/singlepage" , movie.id]'>
+          <div>
+            <img class="w-100 animate__wobble" [src]="imgprefix+movie.poster_path" alt="{movie.title}">
+            <div class="content">
+              <h3 class="h6">{{movie.title}}</h3>
+              <p>{{movie.overview}}</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-wrapper"></div>
+  <!--  tv -->
+  <div class="row py-5">
+    <div class="col-xl-3  col-sm-12">
+      <div class="title-wrapper">
+        <div class="title-wrapper">
+          <h2>Trending tv</h2>
+          <p>most watched tv by day</p>
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let tv of trendTv" class="col-xl-3  col-sm-12">
+      <div class=" movie-card">
+        <a [routerLink]='["/singlepage" , tv.id]'>
+          <div>
+            <img class="w-100" [src]="imgprefix+tv.poster_path" alt="{tv.name}">
+            <div class="content">
+              <h3 class="h6">{{tv.name}}</h3>
+              <p>{{tv.overview}}</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="border-wrapper"></div>
+  <!--  people -->
+  <div class="row py-5">
+    <div class="col-xl-3  col-sm-12">
+      <div class="title-wrapper">
+        <h2>Trending people</h2>
+        <p> to watch Right now </p>
+      </div>
+    </div>
+
+    <div *ngFor="let peo of trendpeople" class="col-xl-3  col-sm-12">
+      <div class=" movie-card">
+        <a [routerLink]='["/people" , peo.id]'>
+          <div>
+            <img *ngIf="!peo.profile_path" class="w-100" [src]="imgprefix+defaultImg" alt="Hello">
+            <img *ngIf="peo.profile_path" class="w-100" [src]="imgprefix+peo.profile_path" alt="{{peo.title}}">
+            <div class="content">
+              <h3 class="h6">{{peo.name}}</h3>
+
+            </div>
+            <div *ngFor="let know of peo.known_for; let i = index;">
+              <h3 class="h6" *ngIf="i == 0">{{know.overview}}</h3>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>

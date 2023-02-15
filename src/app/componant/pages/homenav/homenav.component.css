@@ -1,0 +1,12 @@
+.back-movie
+{
+background-image: url(../../../../assets/image/ba2.webp);
+height:100vh;
+display:flex;
+align-items:end;
+background-repeat:no-repeat;
+background-size:cover ;
+}
+.slider-container{
+  width:100%
+}

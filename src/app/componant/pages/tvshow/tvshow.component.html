@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="card mb-3" >
+
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img
+        [src]="imgprefix+tvDetail?.poster_path" alt="{id.title}"
+          class="img-fluid rounded-start"
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title text-dark">{{tvDetail.title}}</h5>
+          <p class="card-text text-dark">
+            {{tvDetail?.overview}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

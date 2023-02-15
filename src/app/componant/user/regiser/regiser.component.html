@@ -1,0 +1,70 @@
+<div class="container register-form">
+  <div class="form">
+
+    <div class="note">
+      <p>register</p>
+    </div>
+
+      <div *ngIf="errorMsg" class="alert alert-danger my-2" >
+  <p>{{errorMsg}}</p>
+    </div>
+
+        <form class="form-content" [formGroup]="regesterForm" (ngSubmit)="handleRegister()">
+                  <!-- first name -->
+                  <div class="form-group mb-3">
+                      <input type="text" class="form-control" placeholder="first_name *" formControlName="first_name" value=""/>
+
+                      <div class="err-msg my-2" *ngIf="first_name?.invalid &&(first_name?.dirty || first_name?.touched || isSubmitted)">
+
+                        <li *ngIf="first_name?.errors?.['required']">first_name is required</li>
+                        <li *ngIf="first_name?.errors?.['minlength']">first_name min len 3</li>
+                        <li *ngIf="first_name?.errors?.['maxlength']">first_name max len 20</li>
+                    </div>
+
+                  </div>
+                      <!-- last name -->
+
+                      <div class="form-group mb-3">
+                        <input type="text" class="form-control" placeholder="last_name *" formControlName="last_name" value=""/>
+
+                        <div class="alert alert-danger my-2" *ngIf="last_name?.invalid &&(last_name?.dirty || last_name?.touched || isSubmitted)">
+
+                          <li *ngIf="last_name?.errors?.['required']">last_name is required</li>
+                          <li *ngIf="last_name?.errors?.['minlength']">last_name min len 3</li>
+                          <li *ngIf="last_name?.errors?.['maxlength']">last_name max len 20</li>
+                      </div>
+
+                    </div>
+                  <!-- email -->
+                  <div class="form-group mb-3">
+                    <input type="email" class="form-control" placeholder="Email*" formControlName="email" value=""/>
+
+                    <div class="alert alert-danger my-2" *ngIf="email?.invalid&&(email?.dirty || email?.touched || isSubmitted)">
+                      <!-- {{name?.errors|json}} -->
+                      <li *ngIf="email?.errors?.['required']">email is required</li>
+                      <li *ngIf="email?.errors?.['email']">invalid format</li>
+                  </div>
+                   </div>
+                       <!-- passward -->
+                  <div class="form-group mb-3">
+                      <input type="password" class="form-control" formControlName="password" placeholder="Your Password *" value=""/>
+
+                      <div class="alert alert-danger my-2" *ngIf="password?.invalid&&(email?.dirty || email?.touched || isSubmitted)">
+                        <!-- {{name?.errors|json}} -->
+                      <!--   <li *ngIf="password?.errors?.['required']">password is required</li> -->
+                        <li *ngIf="password?.errors?.['pattern']">invalid format</li>
+                    </div>
+                  </div>
+                       <!-- age -->
+
+                  <div class="form-group mb-3">
+                    <input type="text" class="form-control" placeholder="age*" formControlName="age" value=""/>
+                   </div>
+
+           <button [disabled]="regesterForm.invalid" class="btnSubmit" type="submit" > regester</button>
+
+          </form>
+
+      </div>
+  </div>
+

@@ -1,0 +1,40 @@
+<div class="container register-form">
+  <div class="form">
+    <div class="note">
+      <p>login</p>
+    </div>
+
+    <form class="form-content" [formGroup]= "loginForm" (ngSubmit)= "handelogin()">
+      <!--  Credintials  -->
+   <div class="alert alert-danger my-2" *ngIf="errorMsg!=''" (input)="errorMsg=''">Invalid Credintials
+
+   </div>
+      <!-- email -->
+      <div class="form-group mb-3">
+        <input type="email" class="form-control" placeholder="Email*" formControlName="email" value="" />
+
+        <div class="err-msg my-2" *ngIf="email?.invalid&&(email?.dirty || email?.touched || isSubmitted)">
+          <!-- {{name?.errors|json}} -->
+          <li *ngIf="email?.errors?.['required']">email is required</li>
+          <li *ngIf="email?.errors?.['email']">invalid format</li>
+        </div>
+      </div>
+
+      <!-- password -->
+
+      <div class="form-group mb-3">
+        <input type="password" class="form-control" formControlName="password" placeholder="Your Password *" value="" />
+
+        <div class="err-msg my-2"
+          *ngIf="password?.invalid&&(password?.dirty || password?.touched || isSubmitted )">
+          <!-- {{email?.errors|json}} -->
+          <li *ngIf="password?.errors?.['required']">password is required</li>
+          <li *ngIf="password?.errors?.['pattern']">invalid format</li>
+        </div>
+      </div>
+      <button class="btnSubmit">Login</button>
+
+    </form>
+
+  </div>
+</div>

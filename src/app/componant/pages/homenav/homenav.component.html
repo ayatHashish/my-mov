@@ -1,0 +1,13 @@
+<section class="back-movie">
+<div class="container">
+  <div class="slider-container">
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let movie of trendMovies">
+        <ng-template carouselSlide [id]="movie.id">
+          <img [src]="imgprefix+movie.poster_path" alt="movie.alt" title="movie.title" />
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</div>
+</section>
